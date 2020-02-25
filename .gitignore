@@ -1,0 +1,20 @@
+.idea
+.DS_Store
+
+# .dist files
+/.docker/php.ini
+/docker-compose.yml
+/.env
+/.env.local.php
+/phpunit.xml
+
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+
+.phpunit
+.phpunit.result.cache
+
+behat.yml

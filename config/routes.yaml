@@ -1,0 +1,66 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::home
+
+# store
+store.set:
+  path: /store/set
+  methods: [GET]
+  controller: App\Controller\StoreController::storeSet
+
+store.set.string:
+  path: /store/set/string/{name}/{value}
+  methods: [GET]
+  controller: App\Controller\StoreController::setString
+
+store.get:
+  path: /store/get
+  methods: [GET]
+  controller: App\Controller\StoreController::storeGet
+
+# medium
+#  utility
+medium.store.get:
+  path: /medium/store/get
+  methods: [GET]
+  controller: App\Controller\MediumController::storeGet
+
+medium.store.clear:
+  path: /medium/store/clear
+  methods: [GET]
+  controller: App\Controller\MediumController::storeClear
+
+#  google
+medium.google.oauth.flow:
+  path: /medium/google/oauth/flow/start
+  methods: [GET]
+  controller: App\Controller\MediumController::googleOAuthFlowStart
+
+medium.google.oauth.answer:
+  path: /medium/google/oauth/flow/answer
+  methods: [GET]
+  controller: App\Controller\MediumController::googleOAuthFlowAnswer
+
+medium.google.drive.file.list:
+  path: /medium/google/drive/file/list
+  methods: [GET]
+  controller: App\Controller\MediumController::googleDriveFileList
+  format: json
+
+medium.google.drive.file.get:
+  path: /medium/google/drive/file/get
+  methods: [GET]
+  controller: App\Controller\MediumController::googleDriveFileGet
+  format: json
+
+medium.google.share.uri.capabilities:
+  path: /medium/google/share/uri/capabilities
+  methods: [GET]
+  controller: App\Controller\MediumController::googleShareUriCapabilities
+  format: json
+
+# maya
+maya.test:
+  path: /maya/test
+  methods: [GET]
+  controller: App\Controller\MayaController::test

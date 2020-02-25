@@ -1,0 +1,43 @@
+version: '2.0'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+    volumes:
+      - ./:/var/www/igor
+      - ./.docker/php.ini:/etc/php/7.4/apache2/conf.d/1000-custom-php.ini
+      - ./.docker/vhost.conf:/etc/apache2/sites-enabled/igor.conf
+    ports:
+      - 80:80
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME}
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7.25
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_DATABASE_HOST=${DATABASE_HOST}
+      - MYSQL_DATABASE_PORT=${DATABASE_PORT}
+
+  start_dependencies:
+    image: ubuntu:14.04
+    depends_on:
+      - mysql
+    command: >
+      /bin/bash -c "
+        while ! nc -z mysql 3306;
+        do
+          echo 'waiting for database server to be reachable before continuing...';
+          sleep 1;
+        done;
+        echo Connected!;
+      "

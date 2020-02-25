@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .nav {
+            position: absolute;
+            height: 100%;
+            width: 15rem;
+            margin: 0;
+            padding: 0;
+            overflow: scroll;
+            font-size: 0.8rem;
+        }
+        .nav > a {
+            display: block;
+            margin: 0.5rem 1rem;
+        }
+        h1 {
+            position: relative;
+            z-index: 1;
+            margin: auto;
+            width: 100%;
+            text-align: center;
+            padding: 0 2.5rem 4rem 15rem;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <section class="nav">
+        <a href="{{ url('medium.google.share.uri.capabilities') }}">Medium: Google share URI capabilities</a>
+    </section>
+    <h1>{{ quote }}</h1>
+{% endblock %}
