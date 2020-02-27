@@ -1,8 +1,12 @@
-include .env
+-include .env
 
-NO_COLOR=$(shell tput sgr0)
-GREEN=$(shell tput bold)$(shell tput setaf 2)
-RED=$(shell tput bold)$(shell tput setaf 1)
+NO_COLOR=$(shell tput sgr0 -T xterm)
+RED=$(shell tput bold -T xterm)$(shell tput setaf 1 -T xterm)
+GREEN=$(shell tput bold -T xterm)$(shell tput setaf 2 -T xterm)
+YELLOW=$(shell tput bold -T xterm)$(shell tput setaf 3 -T xterm)
+BLUE=$(shell tput bold -T xterm)$(shell tput setaf 4 -T xterm)
+
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
 default: install
 
